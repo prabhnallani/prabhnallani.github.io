@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}</style>
+<title>Prabh Nallani</title>
+<meta name="description" content="Prabh Nallani: video engineer building AI agents for media pipelines. Ex-Netflix Staff Video Engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;125,700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single editorial column, opened by a SMPTE colour-bar strip; career shown as an edit decision list (EDL). */
+:root {
+  --paper: #eef1f2;
+  --surface: #f8fafa;
+  --ink: #13202a;
+  --muted: #56646e;
+  --rule: #cbd3d8;
+  --accent: #1d5fc4;
+  --accent-soft: #dfe9f8;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  /* SMPTE 75% bars: fixed broadcast values, same in both themes */
+  --b1: #bfbfbf; --b2: #bfbf00; --b3: #00bfbf; --b4: #00bf00; --b5: #bf00bf; --b6: #bf0000; --b7: #0000bf;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0e151a; --surface: #141d23; --ink: #e5ebee; --muted: #93a1ab; --rule: #273540;
+    --accent: #7aaeff; --accent-soft: #17263a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0e151a; --surface: #141d23; --ink: #e5ebee; --muted: #93a1ab; --rule: #273540;
+  --accent: #7aaeff; --accent-soft: #17263a; color-scheme: dark;
+}
+
+body { background: var(--paper); color: var(--ink); font: 17px/1.6 var(--body); }
+.bars { display: grid; grid-template-columns: repeat(7, 1fr); height: 10px; }
+.bars span:nth-child(1) { background: var(--b1); } .bars span:nth-child(2) { background: var(--b2); }
+.bars span:nth-child(3) { background: var(--b3); } .bars span:nth-child(4) { background: var(--b4); }
+.bars span:nth-child(5) { background: var(--b5); } .bars span:nth-child(6) { background: var(--b6); }
+.bars span:nth-child(7) { background: var(--b7); }
+
+.wrap {
+  max-width: 1040px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 72px;
+  display: grid; gap: 64px;
+}
+h1, h2, h3, p, ul, ol { margin: 0; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.label { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* Hero */
+.hero { display: grid; gap: 20px; }
+.hero h1 { font-family: var(--display); font-stretch: 125%; font-weight: 700; font-size: clamp(40px, 8vw, 76px); line-height: .98; letter-spacing: -.01em; text-wrap: balance; }
+.hero .role { font-family: var(--display); font-stretch: 112%; font-weight: 600; font-size: clamp(20px, 3vw, 27px); line-height: 1.25; max-width: 30ch; text-wrap: balance; }
+.hero .role em { font-style: normal; color: var(--accent); }
+.hero .lede { max-width: 62ch; color: var(--ink); }
+.links { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; font: 500 14px var(--mono); }
+.links a { text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+.links a:hover { border-color: var(--accent); }
+
+/* Section heads */
+section { display: grid; gap: 24px; }
+.head { display: grid; gap: 6px; border-top: 1px solid var(--rule); padding-top: 18px; }
+h2 { font-family: var(--display); font-stretch: 112%; font-weight: 600; font-size: 28px; line-height: 1.2; text-wrap: balance; }
+.intro { max-width: 64ch; color: var(--muted); }
+
+/* Work */
+.work { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.item { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.item.lead { border-color: var(--accent); background: var(--accent-soft); }
+.item h3 { font-family: var(--display); font-stretch: 112%; font-weight: 600; font-size: 19px; line-height: 1.25; text-wrap: balance; }
+.item p { font-size: 16px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { font: 12px var(--mono); color: var(--muted); border: 1px solid var(--rule); border-radius: 3px; padding: 1px 6px; }
+.item .more { font: 500 13px var(--mono); }
+
+/* EDL */
+.edl-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+.edl { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 15px; }
+.edl th { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+.edl td { padding: 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.edl tr:last-child td { border-bottom: 0; }
+.edl .ev, .edl .tc { font: 14px var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--muted); }
+.edl .reel { font-weight: 600; white-space: nowrap; }
+.edl .reel small { display: block; font-weight: 400; color: var(--muted); font-size: 13px; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px 32px; }
+.skills div { display: grid; gap: 6px; min-width: 0; }
+.skills h3 { font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.skills p { font-size: 16px; }
+
+/* Recognition */
+.recog { list-style: none; padding: 0; display: grid; gap: 14px; max-width: 72ch; }
+.recog li { display: grid; grid-template-columns: 9.5em 1fr; gap: 12px; }
+.recog .k { font: 500 12px/1.9 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+/* Contact */
+.contact { display: grid; gap: 14px; }
+.contact .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.email { font: 500 18px var(--mono); user-select: all; }
+button { font: 500 13px var(--mono); color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 6px 12px; cursor: pointer; }
+button:hover { border-color: var(--accent); }
+.status { font: 13px var(--mono); color: var(--muted); }
+footer { font: 12px var(--mono); color: var(--muted); }
+
+@media (max-width: 520px) {
+  .recog li { grid-template-columns: 1fr; gap: 2px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .item { transition: border-color .15s ease; }
+  .item:hover { border-color: var(--accent); }
+}
+</style>
+
+</head>
+<body>
+<div class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<main class="wrap">
+  <header class="hero">
+    <span class="label">Video engineer · Dublin, CA (Bay Area)</span>
+    <h1>Prabh Nallani</h1>
+    <p class="role">Media pipelines, encoding and image quality, now with <em>AI agents for video processing</em>.</p>
+    <p class="lede">I've spent 15+ years making video correct and fast: from video-quality detection algorithms and ARM codecs, to HDR conversion and Blu-ray encoding, to nine years at Netflix as a Staff Video Engineer, where I co-architected the camera file processing platform used across 300+ titles a year. Today I build LLM agent workflows that normalize camera metadata and triage pipeline failures, with guardrails, evaluation and humans in the loop.</p>
+    <nav class="links" aria-label="Profiles">
+      <a href="https://www.linkedin.com/in/nprabhanjan" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://patents.google.com/patent/US8111929" target="_blank" rel="noopener">US Patent 8,111,929</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="work-h">
+    <div class="head">
+      <span class="label">Selected work</span>
+      <h2 id="work-h">What I've built</h2>
+    </div>
+    <div class="work">
+      <article class="item lead">
+        <span class="label">Netflix · platform</span>
+        <h3>Camera file processing at scale</h3>
+        <p>Co-architected the cloud-native platform that inspects, transcodes, transwraps and colour-transforms original camera files for editorial, VFX pulls and dailies, across 300+ camera models and thousands of parallel jobs on Netflix's Cosmos platform.</p>
+        <div class="tags"><span>FilmLight API</span><span>camera SDKs</span><span>ACES</span><span>Conductor</span><span>Titus</span></div>
+        <a class="more" href="https://www.infoq.com/news/2026/06/netflix-camera-file-processing/" target="_blank" rel="noopener">Read the coverage →</a>
+      </article>
+      <article class="item">
+        <span class="label">AI agents · design and prototype</span>
+        <h3>Camera metadata mapping agent</h3>
+        <p>Every vendor names the same field differently. An LLM workflow profiles each field, retrieves vendor docs (RAG), and writes a mapping as a program in a restricted DSL. Code guardrails run it on real samples, an LLM judge can only raise doubts, and a human approves. Production runs with no model call.</p>
+        <div class="tags"><span>RAG</span><span>structured output</span><span>LLM-as-a-judge</span><span>HITL</span><span>golden sets</span></div>
+      </article>
+      <article class="item">
+        <span class="label">AI agents · design and prototype</span>
+        <h3>Pipeline triage agent</h3>
+        <p>When an encode job fails, the pipeline gathers logs and metrics, searches the runbook with BM25, and makes one structured triage call. A bounded code agent with read-only tools then finds the regression and submits a fix that a test runner must prove red, then green, before a draft PR opens.</p>
+        <div class="tags"><span>tool use</span><span>evaluator-optimizer</span><span>BM25</span><span>sandboxed tests</span></div>
+      </article>
+      <article class="item">
+        <span class="label">Netflix · quality</span>
+        <h3>Colour consistency across SDK releases</h3>
+        <p>Built a reference-image regression suite that flags decode and colour changes between camera SDK versions, and introduced locked pipeline versions so a production's look never shifts mid-show.</p>
+        <div class="tags"><span>reference images</span><span>PSNR</span><span>CI</span></div>
+      </article>
+      <article class="item">
+        <span class="label">Netflix · encoding</span>
+        <h3>Encoding optimization</h3>
+        <p>Worked on convex-hull encoding and VMAF-based quality evaluation across H.264, HEVC and AV1 to cut bitrate while keeping a near-original viewing experience.</p>
+        <div class="tags"><span>VMAF</span><span>convex hull</span><span>H.264</span><span>HEVC</span><span>AV1</span></div>
+      </article>
+      <article class="item">
+        <span class="label">Technicolor · HDR</span>
+        <h3>SDR-to-HDR intelligent tone mapping</h3>
+        <p>Designed a conversion platform with ProRes and DPX plugins and a colour-space engine for Rec.601, 709, 2020 and P3, alongside a multi-threaded C++ pre-processing engine for Blu-ray encoding.</p>
+        <div class="tags"><span>tone mapping</span><span>C/C++</span><span>Rec.2020</span><span>DPX</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="edl-h">
+    <div class="head">
+      <span class="label">Career, as an edit decision list</span>
+      <h2 id="edl-h">Experience</h2>
+    </div>
+    <div class="edl-wrap">
+      <table class="edl">
+        <thead><tr><th>Event</th><th>Reel</th><th>In</th><th>Out</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="ev">004</td><td class="reel">Netflix<small>Staff Video Engineer, Live and Encoding Technology</small></td><td class="tc">2017</td><td class="tc">2026</td><td>Camera file processing platform, encoding optimization, reference-image testing, LLM agents for metadata and failure triage. Mentored engineers.</td></tr>
+          <tr><td class="ev">003</td><td class="reel">Technicolor<small>Senior engineer, West Hollywood</small></td><td class="tc">2012</td><td class="tc">2017</td><td>TIGER encoder pre-processing (de-banding, dithering, scaling, scene detection), SDR-to-HDR platform, Pulse asset management.</td></tr>
+          <tr><td class="ev">002</td><td class="reel">Ittiam Systems<small>Embedded video, Bangalore</small></td><td class="tc">2010</td><td class="tc">2012</td><td>SIMD-optimized image decoders for ARM; H.264 deblocking and motion estimation in an SVC encoder.</td></tr>
+          <tr><td class="ev">001</td><td class="reel">Interra Systems<small>Video quality, Delhi</small></td><td class="tc">2006</td><td class="tc">2010</td><td>Baton automated QC: blockiness, blur, banding, freeze and gamut detection. Blockiness work granted a US patent.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="skills-h">
+    <div class="head">
+      <span class="label">Toolkit</span>
+      <h2 id="skills-h">Skills</h2>
+    </div>
+    <div class="skills">
+      <div><h3>AI and agents</h3><p>LLM workflows and agents, RAG (BM25 and embeddings), structured outputs, tool use and MCP, LLM-as-a-judge, human-in-the-loop, evaluation with golden sets. Claude Code, Cursor.</p></div>
+      <div><h3>Video and streaming</h3><p>H.264, HEVC, AV1, ProRes; HLS, DASH, CMAF, MPEG-TS; RTMP, RTSP, WebRTC; FFmpeg, GStreamer; VMAF, PSNR, SSIM.</p></div>
+      <div><h3>Colour and camera</h3><p>ACES (IDT, ODT, AMF), HDR tone mapping, ASC FDL; RED, ARRI, Sony camera SDKs; Baselight, Resolve, Colorfront.</p></div>
+      <div><h3>Engineering</h3><p>Python, C/C++, Java, Go; AWS, Docker, Kubernetes; Conductor, Titus, Spinnaker; Cassandra, CockroachDB, MongoDB.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="rec-h">
+    <div class="head">
+      <span class="label">Recognition</span>
+      <h2 id="rec-h">Patent and publications</h2>
+    </div>
+    <ul class="recog">
+      <li><span class="k">US Patent</span><span><a href="https://patents.google.com/patent/US8111929" target="_blank" rel="noopener">8,111,929</a>: Method and system to detect and quantify blockiness in video files.</span></li>
+      <li><span class="k">Netflix</span><span>Core contributor to the platform described in "Scaling Camera File Processing at Netflix".</span></li>
+      <li><span class="k">IEEE</span><span>Content-based image retrieval using colour and spatial features (master's thesis).</span></li>
+      <li><span class="k">Education</span><span>Master's in Computers, Delhi Technological University. Bachelor's in Computers, Nagarjuna University.</span></li>
+    </ul>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-h">
+    <div class="head">
+      <span class="label">Open to roles in video, media and AI</span>
+      <h2 id="contact-h">Get in touch</h2>
+    </div>
+    <div class="row">
+      <span class="email" id="email">nprabhanjan@gmail.com</span>
+      <button type="button" id="copy-email">Copy email</button>
+      <span class="status" id="copy-status" aria-live="polite"></span>
+    </div>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/nprabhanjan" target="_blank" rel="noopener">linkedin.com/in/nprabhanjan</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Prabh Nallani</footer>
+</main>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var status = document.getElementById('copy-status');
+  var email = document.getElementById('email');
+  btn.addEventListener('click', function () {
+    var text = email.textContent;
+    function selectText() {
+      var r = document.createRange(); r.selectNodeContents(email);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      status.textContent = 'Selected. Press Ctrl+C or Cmd+C to copy.';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        status.textContent = 'Copied';
+      }, selectText);
+    } catch (e) { selectText(); }
+  });
+})();
+</script>
+</body>
+</html>
